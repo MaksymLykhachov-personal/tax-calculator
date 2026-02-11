@@ -52,8 +52,6 @@ $.widget("tax.calculator", {
 			maximumFractionDigits: 4,
 		});
 
-		console.log(formattedValue);
-
 		return (
 			this.taxCost.val() +
 			" x " +
