@@ -1,103 +1,143 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 <html lang="uk">
-<head>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
-    <meta charset="UTF-8">
-    <title>Помічник бухгалетера</title>
-</head>
-<body>
-    <div class="page-wrapper">
-        <div class="row">
-            <h1 class="text-center mb-3">Калькулятори для Бухгалтера</h1>
-            <div class="calculator-wrapper col-lg-5 col-md-12 mb-5">
-                <h2>Ставка акцизу:</h2>
-                <form class="form needs-validation g-3" id="tax-calculator-form" novalidate>
-                    <div class="form-floating mb-3">
-                        <input type="number" step="any" class="form-control" id="tax-cost" required />
-                        <label for="tax-cost" class="form-label">Оподатковувані (гр. 8)</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="number" step="any" class="form-control" id="tax-other" required />
-                        <label for="tax-other" class="form-label">Міцність та інші показники (гр. 5)</label>
-                    </div>
-                    <div class="alert alert-primary d-flex align-items-center" role="alert">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
-                            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                        </svg>
-                        <div>
-                            Коефіцієнт: 100
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-success btn-lg">Розрахувати</button>
-                </form>
-            </div>
-            <div class="result-column col-lg-7 col-md-12">
-                <h2>Результат:</h2>
+	<head>
+		<link href="css/bootstrap.min.css" rel="stylesheet" />
+		<link href="css/styles.css" rel="stylesheet" />
+		<meta charset="UTF-8" />
+		<title>Помічник бухгалетера</title>
+	</head>
+	<body>
+		<div class="page-wrapper">
+			<div class="row">
+				<h1 class="text-center mb-3">Калькулятори для Бухгалтера</h1>
+				<div class="calculator-wrapper col-lg-5 col-md-12 mb-5">
+					<h2>Ставка акцизу:</h2>
+					<form class="form needs-validation g-3" id="tax-calculator-form" novalidate>
+						<div class="form-floating mb-3">
+							<input type="number" step="any" class="form-control" id="tax-cost" required />
+							<label for="tax-cost" class="form-label">Оподатковувані (гр. 8)</label>
+						</div>
+						<div class="form-floating mb-3">
+							<input type="number" step="any" class="form-control" id="tax-other" required />
+							<label for="tax-other" class="form-label">Міцність та інші показники (гр. 5)</label>
+						</div>
+						<div class="alert alert-primary d-flex align-items-center" role="alert">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="24"
+								height="24"
+								fill="currentColor"
+								class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"
+								viewBox="0 0 16 16"
+								role="img"
+								aria-label="Warning:"
+							>
+								<path
+									d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+								/>
+							</svg>
+							<div>Коефіцієнт: 100</div>
+						</div>
+						<button type="submit" class="btn btn-success btn-lg">Розрахувати</button>
+					</form>
+				</div>
+				<div class="result-column col-lg-7 col-md-12">
+					<h2>Результат:</h2>
 
-                <div id="result-container">
-                    <h4 class="text-secondary">База оподаткування (гр. 9) = <span class="value">0</span></h4>
-                </div>
-            </div>
-        </div>
+					<div id="result-container">
+						<h4 class="text-secondary">База оподаткування (гр. 9) = <span class="value">0</span></h4>
+					</div>
+				</div>
+			</div>
 
-        <form class="form needs-validation" id="produced-beer-mount-form" novalidate>
-            <div class="row">
-                <h2>
-                    Кількість виробленного пива:
-                </h2>
-                <div class="calculator-wrapper mb-3 col-lg-5 col-md-12">
-                    <div class="mb-3 form-floating">
-                        <input type="number" step="any" inputmode="decimal" value="0" class="form-control" id="produced-beer-mount-liters" required />
-                        <label for="produced-beer-mount-liters" class="form-label">Вироблені літри</label>
-                    </div>
-                    <div class="mb-3 form-floating">
-                        <input type="number" step=".01" class="form-control" inputmode="decimal" value="" name="produced-beer-mount-alcohol-percentage" id="produced-beer-mount-alcohol-percentage" list="defaultPercents" required />
-                        <label for="produced-beer-mount-alcohol-percentage" class="form-label">Відсоток спирту</label>
+			<form class="form needs-validation" id="produced-beer-mount-form" novalidate>
+				<div class="row">
+					<h2>Кількість виробленного пива:</h2>
+					<div class="calculator-wrapper mb-3 col-lg-5 col-md-12">
+						<div class="mb-3 form-floating">
+							<input
+								type="number"
+								step="any"
+								inputmode="decimal"
+								value="0"
+								class="form-control"
+								id="produced-beer-mount-liters"
+								required
+							/>
+							<label for="produced-beer-mount-liters" class="form-label">Вироблені літри</label>
+						</div>
+						<div class="mb-3 form-floating">
+							<input
+								type="number"
+								step=".01"
+								class="form-control"
+								inputmode="decimal"
+								value=""
+								name="produced-beer-mount-alcohol-percentage"
+								id="produced-beer-mount-alcohol-percentage"
+								list="defaultPercents"
+								required
+							/>
+							<label for="produced-beer-mount-alcohol-percentage" class="form-label"
+								>Відсоток спирту</label
+							>
 
-                        <datalist id="defaultPercents">
-                            <option value="4"></option>
-                            <option value="4.5"></option>
-                            <option value="5"></option>
-                            <option value="5.5"></option>
-                            <option value="6"></option>
-                            <option value="6.5"></option>
-                            <option value="7"></option>
-                            <option value="7.5"></option>
-                            <option value="8"></option>
-                            <option value="8.4"></option>
-                        </datalist>
-                    </div>
-                    <div class="alert alert-info d-flex align-items-center" role="alert">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
-                            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                        </svg>
-                        <div>
-                            Дали - літраж треба поділити на 10 <br>
-                            Декалитр безводного спирта - дали поділити на 100 та помножити на відсоток спирту
-                        </div>
-                    </div>
+							<datalist id="defaultPercents">
+								<option value="4"></option>
+								<option value="4.5"></option>
+								<option value="5"></option>
+								<option value="5.5"></option>
+								<option value="6"></option>
+								<option value="6.5"></option>
+								<option value="7"></option>
+								<option value="7.5"></option>
+								<option value="8"></option>
+								<option value="8.4"></option>
+							</datalist>
+						</div>
+						<div class="alert alert-primary d-flex align-items-center" role="alert">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="24"
+								height="24"
+								fill="currentColor"
+								class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"
+								viewBox="0 0 16 16"
+								role="img"
+								aria-label="Warning:"
+							>
+								<path
+									d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+								/>
+							</svg>
+							<div>
+								Дали - літраж треба поділити на 10 <br />
+								Декалитр безводного спирта - дали поділити на 100 та помножити на відсоток спирту
+							</div>
+						</div>
 
-                    <button type="submit" class="btn text-bg-warning rounded-3 btn-lg">Розрахувати</button>
-                </div>
+						<button type="submit" class="btn text-bg-warning rounded-3 btn-lg">Розрахувати</button>
+					</div>
 
-                <div class="result-column col-lg-7 col-md-12">
-                    <h2>Результат:</h2>
+					<div class="result-column col-lg-7 col-md-12">
+						<h2>Результат:</h2>
 
-                    <div class="result-container text-secondary">
-                        <h4>
-                            Декалітри (Дали) = <span class="dal-value">0</span> <br/>
-                            Дал б/с =  <span class="dal-value">0</span> / 100 x <span class="alcohol-percentage-value">7</span> =  <span class="dal-bs-value">0</span> Дал
-                        </h4>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-    <footer class="footer">
-        <script src="js/vendor/jquery-3.6.0.min.js"></script>
-        <script src="js/vendor/jquery-ui.min.js"></script>
-        <script src="js/calculator.js"></script>
-    </footer>
-</body>
+						<div class="result-container text-secondary">
+							<h4>
+								Декалітри (Дали) = <span class="dal-value">0</span> <br />
+								Дал б/с = <span class="dal-value">0</span> / 100 x
+								<span class="alcohol-percentage-value">7</span> =
+								<span class="dal-bs-value">0</span> Дал
+							</h4>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<footer class="footer">
+			<script src="js/vendor/jquery-4.0.0.min.js"></script>
+			<script src="js/vendor/jquery-ui.min.js"></script>
+			<script src="js/calculator.js"></script>
+		</footer>
+	</body>
 </html>
