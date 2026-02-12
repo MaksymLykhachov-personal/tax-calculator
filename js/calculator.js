@@ -85,8 +85,12 @@ $.widget("tax.calculator", {
 	/**
 	 * Common entry point for submit, blur, keyup.
 	 * Runs validation, calculation, and resets copy button state.
+	 * Skips when blur is caused by clicking copy button (prevents DOM replace before copy).
 	 */
 	_bindInit: function (event) {
+		if (event.type === "blur" && event.relatedTarget && $(event.relatedTarget).hasClass("copy-button")) {
+			return;
+		}
 		this._validate(event);
 		this._calculate();
 		this._clearCopyButtonState();
@@ -270,8 +274,12 @@ $.widget("dal_bs.calculator", {
 	/**
 	 * Common entry point for submit, blur, keyup.
 	 * Runs validation, calculation, and resets copy button state.
+	 * Skips when blur is caused by clicking copy button (prevents clearing "copied" state).
 	 */
 	_bindInit: function (event) {
+		if (event.type === "blur" && event.relatedTarget && $(event.relatedTarget).hasClass("copy-button")) {
+			return;
+		}
 		this._validate(event);
 		this._calculate();
 		this._clearCopyButtonState();
