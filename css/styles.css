@@ -7,3 +7,50 @@
 label {
 	cursor: pointer;
 }
+
+#result-container {
+	.value {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: flex-end;
+	}
+}
+
+.copy-button {
+	&.copied {
+		position: relative;
+		background: white;
+		outline: transparent;
+		border-color: transparent;
+		color: green;
+		pointer-events: none;
+
+		&:focus {
+			box-shadow: none;
+		}
+
+		&::before {
+			content: "скопійовано";
+			position: absolute;
+			left: 85%;
+			top: 20%;
+			font-size: 12px;
+		}
+
+		&::after {
+			content: "\2714";
+			font-family: Arial, Helvetica, sans-serif;
+			font-weight: 700;
+			font-size: 22px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+	}
+
+	&.copied svg {
+		opacity: 0;
+	}
+}
